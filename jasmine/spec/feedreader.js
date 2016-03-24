@@ -132,5 +132,38 @@ $(function() {
             done();
         });
     });
-    
+
+    // Additional test suite
+    // Mark as read when click an article (add a "read" class to .entry-link)
+
+    describe('Mark As Read', function() {
+
+        beforeEach(function() {
+            jasmine.Ajax.install();
+        });
+
+        afterEach(function() {
+            jasmine.Ajax.uninstall();
+        });
+
+        it('article should display as read', function() {
+            var readEntry = $('.entry-link').eq(3);
+            var url = readEntry.attr('href');
+
+            // if use click() method, it can't be back to feedreader page, just use ajax method to instead of url click.
+            var doneFn = jasmine.createSpy("success");
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(args) {
+                if (this.readyState == this.DONE) {
+                    doneFn(this.responseText);
+                }
+            };
+
+            xhr.open("GET", url);
+            xhr.send();
+
+            expect(readEntry.hasClass('read')).toBe(true);
+        });
+    });
 }());

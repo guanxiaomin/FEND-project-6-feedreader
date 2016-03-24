@@ -26,4 +26,4 @@ This test suite is for a new feature "<em>Mark As Read* </em>" which makes a rea
 * [Jasmine 2.1 Document](http://jasmine.github.io/2.1/introduction.html)
 * [jQuery API Documentation](http://api.jquery.com/)
 * [Google Feed API] (https://developers.google.com/feed/v1/devguide#introduction)
-* [Jasmine Ajex](http://jasmine.github.io/2.1/ajax.html)
+* [Jasmine Ajax](http://jasmine.github.io/2.1/ajax.html)

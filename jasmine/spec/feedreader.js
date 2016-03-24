@@ -111,22 +111,26 @@ $(function() {
          */
     describe('New Feed Selection', function() {
         var initEntrys,
-            newEntrys;
-        var randomId = Math.floor(Math.random() * 3) + 1;
+            newEntrys,
+            randomId = Math.floor(Math.random() * 3) + 1;
 
         beforeEach(function (done) {
-            initEntrys = $('.entry > h2').html();
+            // load initial feed
+            loadFeed(0, function() {
+                initEntrys = $('.entry > h2').html();
+            });
 
+            // load new random feed
             loadFeed(randomId, function() {
-
                 newEntrys = $('.entry > h2').html();
                 done();
             });
         });
 
-        it('content should change when a new feed is loaded', function(done) {
+        it('content should change when a new feed is loaded', function() {
+            //console.log(initEntrys);
+            //console.log(newEntrys);
             expect(newEntrys).not.toEqual(initEntrys);
-            done();
         });
     });
 

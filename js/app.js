@@ -122,6 +122,11 @@ $(function() {
 
         $('body').addClass('menu-hidden');
         loadFeed(item.data('id'));
+        //
+        //var entrys = $('.entry > h2').map(function () {
+        //    return $(this).text();
+        //}).get();
+        //console.log(entrys);
         return false;
     });
 
@@ -130,5 +135,6 @@ $(function() {
      */
     menuIcon.on('click', function() {
         $('body').toggleClass('menu-hidden');
+        //console.log($('body').hasClass('menu-hidden'));
     });
 }());

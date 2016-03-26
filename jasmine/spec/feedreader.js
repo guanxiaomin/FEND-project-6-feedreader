@@ -110,27 +110,29 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
     describe('New Feed Selection', function() {
-        var initEntrys,
-            newEntrys,
+        var initEntries,
+            newEntries,
             randomId = Math.floor(Math.random() * 3) + 1;
 
         beforeEach(function (done) {
+            $('.feed').empty(); // make sure not to use results from "Initial Entries"
+
             // load initial feed
             loadFeed(0, function() {
-                initEntrys = $('.entry > h2').html();
-            });
-
-            // load new random feed
-            loadFeed(randomId, function() {
-                newEntrys = $('.entry > h2').html();
+                initEntries = $('.entry > h2').html();
                 done();
             });
         });
 
-        it('content should change when a new feed is loaded', function() {
-            //console.log(initEntrys);
-            //console.log(newEntrys);
-            expect(newEntrys).not.toEqual(initEntrys);
+        it('content should change when a new feed is loaded', function(done) {
+            // load new random feed in chaining method
+            loadFeed(randomId, function () {
+                newEntries = $('.entry > h2').html();
+                //console.log(initEntries);
+                //console.log(newEntries);
+                expect(newEntries).not.toEqual(initEntries);
+                done();
+            });
         });
     });
 
